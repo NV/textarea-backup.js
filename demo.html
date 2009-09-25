@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>textarea backup</title>
+	<style type="text/css">
+	.key {color:green}
+	</style>
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>
+			<form action="">
+				<textarea name="sample"></textarea><br>
+				<input type="submit" value="Submit">
+			</form>
+		</td>
+		<td>
+			<form action="">
+				<textarea name="another_one"></textarea><br>
+				<input type="submit" value="Submit">
+			</form>
+		</td>
+	</tr>
+</table>
+
+<p id="storage"></p>
+
+<script type="text/javascript" src="textarea-backup.user.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var storage = document.getElementById('storage')
+	window.storage = storage;
+	var result = '<table>';
+	for (var i=0; i<localStorage.length; i++) {
+		result += '<tr><td class="key">'+ localStorage[i] +' </td><td class="value"> '+ localStorage[ localStorage[i] ] +'</td></tr>';
+	}
+	result += '</table>';
+	storage.innerHTML = result;
+}
+</script>
+</body></html>
